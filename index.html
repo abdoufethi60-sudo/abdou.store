@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071b16">
+<title>Abdou Sport</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#071710;color:white;font-family:Arial,sans-serif;padding-bottom:75px}
+header{background:#10291d;padding:20px;text-align:center;border-bottom:2px solid #20d58b}
+.logo{font-size:28px;font-weight:bold;color:#20d58b}
+header p{color:#b4c8ba;font-size:13px}
+nav{display:flex;justify-content:space-around;background:#142b20;padding:14px;position:sticky;top:0}
+nav a{color:white;text-decoration:none;font-size:13px}
+.container{padding:15px;max-width:650px;margin:auto}
+h2{font-size:18px}
+.tabs{display:flex;gap:8px;margin:15px 0}
+.tabs button{flex:1;background:#193629;color:white;border:0;padding:12px;border-radius:9px}
+.tabs button.active{background:#20c982;color:#071710;font-weight:bold}
+.match{background:#132a1e;border:1px solid #284735;border-radius:13px;padding:16px;margin:12px 0}
+.league{color:#a8c2ae;font-size:13px;margin-bottom:16px}
+.teams{display:flex;justify-content:space-between;align-items:center;text-align:center}
+.team{width:36%;font-size:13px;font-weight:bold}
+.score{font-size:22px;color:#20d58b;font-weight:bold}
+.status{text-align:center;color:#a8c2ae;font-size:12px;margin-top:14px}
+.live{color:#ff5555}
+.news{background:#132a1e;padding:16px;border-radius:12px;margin:12px 0;line-height:1.8}
+footer{text-align:center;color:#91a99a;padding:25px;font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">⚽ ABDOU SPORT</div>
+<p>عالم كرة القدم بين يديك</p>
+</header>
+
+<nav>
+<a href="#matches">المباريات</a>
+<a href="#leagues">الدوريات</a>
+<a href="#news">الأخبار</a>
+</nav>
+
+<div class="container">
+
+<h2 id="matches">⚽ مباريات كرة القدم</h2>
+
+<div class="tabs">
+<button class="active" onclick="showMatches('today',this)">اليوم</button>
+<button onclick="showMatches('live',this)">مباشر 🔴</button>
+<button onclick="showMatches('tomorrow',this)">غداً</button>
+</div>
+
+<div id="matchList">
+
+<div class="match" data-day="today" data-live="true">
+<div class="league">🏆 مباراة تجريبية</div>
+<div class="teams">
+<div class="team">الفريق الأول</div>
+<div class="score">2 - 1</div>
+<div class="team">الفريق الثاني</div>
+</div>
+<div class="status live">● مباشر تجريبي</div>
+</div>
+
+<div class="match" data-day="today" data-live="false">
+<div class="league">🏆 مباراة تجريبية</div>
+<div class="teams">
+<div class="team">الفريق الثالث</div>
+<div class="score">20:00</div>
+<div class="team">الفريق الرابع</div>
+</div>
+<div class="status">موعد المباراة تجريبي</div>
+</div>
+
+<div class="match" data-day="tomorrow" data-live="false">
+<div class="league">🏆 مباراة تجريبية</div>
+<div class="teams">
+<div class="team">الفريق الخامس</div>
+<div class="score">18:00</div>
+<div class="team">الفريق السادس</div>
+</div>
+<div class="status">غداً</div>
+</div>
+
+</div>
+
+<h2 id="leagues">🏆 البطولات</h2>
+<div class="news">🇩🇿 الدوري الجزائري</div>
+<div class="news">🏴 الدوري الإنجليزي</div>
+<div class="news">🇪🇸 الدوري الإسباني</div>
+<div class="news">🇮🇹 الدوري الإيطالي</div>
+<div class="news">🇩🇪 الدوري الألماني</div>
+<div class="news">🇫🇷 الدوري الفرنسي</div>
+<div class="news">🌍 دوري أبطال أوروبا</div>
+
+<h2 id="news">📰 الأخبار الرياضية</h2>
+<div class="news">
+<strong>مرحباً بك في Abdou Sport!</strong>
+<br>
+تطبيقك الجديد لمتابعة كرة القدم والبطولات والنتائج والأخبار.
+</div>
+
+</div>
+
+<footer>
+ABDOU SPORT © 2026
+<br>كل الحقوق محفوظة
+</footer>
+
+<script>
+function showMatches(day,button){
+document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+button.classList.add('active');
+
+document.querySelectorAll('#matchList .match').forEach(match=>{
+if(day==='live'){
+match.style.display=match.dataset.live==='true'?'block':'none';
+}else{
+match.style.display=match.dataset.day===day?'block':'none';
+}
+});
+}
+</script>
+
+</body>
+</html>
